@@ -1,0 +1,26 @@
+{
+  "name": "myapi",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "basic-auth": "^2.0.1",
+    "body-parser": "^1.20.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "digest-fetch": "^1.3.0",
+    "express": "~4.16.1",
+    "generate-api-key": "^1.0.2",
+    "http-auth": "^4.2.0",
+    "http-auth-connect": "^1.0.6",
+    "http-errors": "~1.6.3",
+    "jade": "~1.11.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.5",
+    "morgan": "~1.9.1",
+    "node-fetch": "^2.6.1",
+    "oauth2-server": "^3.1.1"
+  }
+}
