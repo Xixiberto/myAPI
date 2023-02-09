@@ -35,8 +35,13 @@ var response = new Response(res);
 
 return app.oauth.token(request, response)
     .then(function(token) {
-        
-        res.json(token);
+        var newToken = token;
+        newToken.access_token = token.accessToken;
+        newToken.refresh_token = token.refreshToken;
+        newToken.token_type = 'Bearer';
+        newToken.accessToken = undefined;
+        newToken.refreshToken = undefined;
+        res.json(newToken);
     }).catch(function(err) {
 
         res.status(err.code || 500).json(err);

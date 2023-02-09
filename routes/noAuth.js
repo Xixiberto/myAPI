@@ -6,4 +6,16 @@ router.get('/', function(req, res, next) {
   res.send('sucess no auth');
 });
 
+/* NO VALIDATION NEEDED */
+router.get('/get', function(req, res, next) {
+  
+  
+  //res.sendStatus(200);
+  res.setHeader('Content-Type', 'application/json');
+  
+  //res.end(JSON.stringify({response: 'sucess get request'}));
+  res.status(201).send(JSON.stringify({response: 'sucess get request'}));
+  
+});
+
 module.exports = router;

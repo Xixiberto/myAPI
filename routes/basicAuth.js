@@ -16,4 +16,17 @@ api.get('/', (req,res)=>{
     res.send({message: 'Hello World! ' + 'Welcome! ' + user.name});
   }
 });
+
+api.get('/get', (req,res)=>{
+
+  let user = auth(req)
+
+if (user === undefined || user['name'] !== 'testBasic' || user['pass'] !== 'testBasic') {
+  res.statusCode = 200
+  res.setHeader('WWW-Authenticate', 'Basic realm="Node"')
+  res.end('Unauthorized')
+} else {
+  res.send({message: 'Success get request ' + 'Welcome! ' + user.name});
+}
+});
 module.exports = api;

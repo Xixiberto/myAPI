@@ -26,9 +26,22 @@ router.get('/generateAPIKey', function(req, res, next) {
 /* VALIDATE API KEY */
 router.get('/', function(req, res, next) {
     
-    if(data.key === req.query.id){
-        console.log("entra al if: "+req.query.id);
+    if(data.key === req.query.id || data.key === req.headers.id){
+        //console.log("entra al if: "+req.query.id);
         res.send("Valid API Key");
+    }else{
+        res.send("Invalid Token");
+    }
+    
+   
+});
+
+router.get('/get', function(req, res, next) {
+    
+    
+    if(data.key === req.query.id || data.key === req.headers.id){
+       
+        res.json({message: "VALID GET API KEY"});
     }else{
         res.send("Invalid Token");
     }

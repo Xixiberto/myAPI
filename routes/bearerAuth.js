@@ -33,6 +33,24 @@ router.get('/', verifytoken ,function(req, res, next) {
   
 });
 
+/*GET REQUEST */
+router.get('/get', verifytoken ,function(req, res, next) {
+
+  jwt.verify(req.token, 'secretkey', (err, authData) => {
+    if(err){
+      res.sendStatus(403);
+    }else {
+      res.json({
+        message: "Welcome to profile",
+        userData: authData,
+        end: 'Succesfull GET Bearer Auth'
+      })
+      
+    }
+  })
+  
+});
+/* VERIFY TOKEN*/
 function verifytoken (req,res,next) {
 
   var bearerHeader = req.headers['authorization'];
