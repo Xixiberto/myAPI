@@ -33,6 +33,15 @@ var request = new Request(req);
 var response = new Response(res);
 
 
+console.log(request.headers);
+console.log(request.body);
+//console.log("*******************************")
+//console.log(response.query);
+//console.log(response.headers);
+//console.log(response.body);
+
+//console.log("response: " + response);
+
 return app.oauth.token(request, response)
     .then(function(token) {
         var newToken = token;
@@ -41,7 +50,8 @@ return app.oauth.token(request, response)
         newToken.token_type = 'Bearer';
         newToken.accessToken = undefined;
         newToken.refreshToken = undefined;
-        res.json(newToken);
+        
+        res.status(200).json(newToken);
     }).catch(function(err) {
 
         res.status(err.code || 500).json(err);
@@ -70,7 +80,14 @@ router.all('/getToken', obtainToken);
 
 router.get('/', authenticateRequest, function(req, res) {
 
-	res.send('Congratulations, you are in a secret area!');
+	res.json({message: "Congratulations, you are in a secret area!"});
+});
+
+router.get('/get', authenticateRequest, function(req, res) {
+  console.log(req.query);
+  console.log(req.headers);
+  console.log(req.body);
+	res.json({message: "GOOD GET REQUEST OAUTH2"});
 });
 
 
