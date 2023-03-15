@@ -18,4 +18,19 @@ router.get('/get', function(req, res, next) {
   
 });
 
+router.get('/getTimeout', function(req, res, next) {
+  
+  
+  //res.sendStatus(200);
+  setTimeout((() => {
+    res.setHeader('Content-Type', 'application/json');
+  
+  //res.end(JSON.stringify({response: 'sucess get request'}));
+  
+    return res.status(201).send(JSON.stringify({response: 'sucess get request timeout'}));
+  }), 10000)
+  
+  
+});
+
 module.exports = router;
